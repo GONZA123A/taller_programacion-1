@@ -17,7 +17,7 @@ const listar = () => {
 
     let lista_general = [];
 
-    listan.forEach(element => {
+    listan.forEach(element, index => {
         
         let li = `
         <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -25,6 +25,7 @@ const listar = () => {
             <div class="fw-bold">${element.usuario}</div>
         </div>
             <span class="badge bg-primary rounded-pill">${element.password}</span>
+            <button class="btn btn-danger btn-sm" style="margin-left:10px">x</button>
          </li>
         `
         lista_general.push(li);
@@ -32,8 +33,13 @@ const listar = () => {
 
     document.getElementById("lista_cuentas").innerHTML = lista_general.join("");
 }
-
+document.getElementById("btn_guardar").addEventListener("click", almacenar);
 
 listar();
 
-document.getElementById("btn_guardar").addEventListener("click", almacenar);
+eliminar(indice)
+{
+    const instancia = new Cuentas();
+
+    instancia.eliminarCuenta(indice);
+}

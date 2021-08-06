@@ -46,8 +46,10 @@ export default class Cuentas {
         return lista;
     }
 
-    eliminarCuenta()
+    eliminarCuenta(index)
     {
-        
+        let lista= JSON.parse(localStorage.getItem("cuenta"))
+        this.lista.splice(index, 1)
+        localStorage.setItem("cuenta",JSON.stringify(lista));
     }
 }
