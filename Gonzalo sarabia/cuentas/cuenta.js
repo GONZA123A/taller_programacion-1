@@ -12,7 +12,38 @@ export default class Cuentas {
 
     guardarCuenta()
     {
+        let cuenta = {
+            usuario: this.usuario,
+            password: this.password
+        }
+        let lista = [];
+        if("cuenta" in localStorage)
+        {
+
+            lista = JSON.parse(localStorage.getItem("cuenta"));
+            
+            lista.push(cuenta);
+
+            //para que se guarde en el cache y no se borre lo echo o escrito
+            localStorage.setItem("cuenta", JSON.stringify(lista));
+
+        }
+        else{
+
+            lista.push(cuenta);
+
+            localStorage.setItem("cuenta", JSON.stringify(lista));
+        }
         
+    }
+
+    listarCuentas()
+    {
+        let lista = [];
+
+        lista = JSON.parse(localStorage.getItem("cuenta"));
+
+        return lista;
     }
 
     eliminarCuenta()
